@@ -14,8 +14,8 @@ import {
 } from "@prisma/client";
 
 import { type ClassValue, clsx } from "clsx";
-import { format, parse } from "date-fns";
-import prettyBytes from "pretty-bytes";
+// import { format, parse } from "date-fns";
+// import prettyBytes from "pretty-bytes";
 import { twMerge } from "tailwind-merge";
 
 /**
@@ -235,42 +235,42 @@ export const generateTimeOptions = () => {
   return times;
 };
 
-export const generateDateOptions = () => {
-  const today = new Date();
-  const dates = [];
-  for (let i = 0; i < 30; i++) {
-    const date = new Date(today);
-    date.setDate(today.getDate() + i);
-    dates.push({
-      label: format(date, "dd MMM yyyy"),
-      value: format(date, "dd MMM yyyy"),
-    });
-  }
-  return dates;
-};
+// export const generateDateOptions = () => {
+//   const today = new Date();
+//   const dates = [];
+//   for (let i = 0; i < 30; i++) {
+//     const date = new Date(today);
+//     date.setDate(today.getDate() + i);
+//     dates.push({
+//       label: format(date, "dd MMM yyyy"),
+//       value: format(date, "dd MMM yyyy"),
+//     });
+//   }
+//   return dates;
+// };
 
-export const formatDate = (date: string, time: string) => {
-  const parsedDate = parse(date, "dd MMM yyyy", new Date());
-  const parsedTime = parse(time, "hh:mm aa", new Date());
+// export const formatDate = (date: string, time: string) => {
+//   const parsedDate = parse(date, "dd MMM yyyy", new Date());
+//   const parsedTime = parse(time, "hh:mm aa", new Date());
 
-  parsedDate.setHours(parsedTime.getHours(), parsedTime.getMinutes(), 0, 0);
+//   parsedDate.setHours(parsedTime.getHours(), parsedTime.getMinutes(), 0, 0);
 
-  return parsedDate;
-};
+//   return parsedDate;
+// };
 
-export function calculatePercentageChange(current: number, previous: number) {
-  if (previous === 0) return current > 0 ? 100 : current < 0 ? -100 : 0;
+// export function calculatePercentageChange(current: number, previous: number) {
+//   if (previous === 0) return current > 0 ? 100 : current < 0 ? -100 : 0;
 
-  return ((current - previous) / Math.abs(previous)) * 100;
-}
+//   return ((current - previous) / Math.abs(previous)) * 100;
+// }
 
-export const convertToMb = (bytes: number) => {
-  return prettyBytes(bytes, {
-    bits: false,
-    maximumFractionDigits: 1,
-    space: false,
-  });
-};
+// export const convertToMb = (bytes: number) => {
+//   return prettyBytes(bytes, {
+//     bits: false,
+//     maximumFractionDigits: 1,
+//     space: false,
+//   });
+// };
 
 export function generateYears(minYear: number, maxYear?: number): string[] {
   const currentYear = maxYear ? maxYear : new Date().getFullYear();

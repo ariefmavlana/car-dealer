@@ -1,26 +1,41 @@
-import type { UpdateClassifiedType } from "@/app/schemas/classified.schema"
-import { Classified, Prisma } from "@prisma/client"
-import { ChangeEvent } from "react"
+import type { UpdateClassifiedType } from "@/app/schemas/classified.schema";
+import type { Classified, Prisma } from "@prisma/client";
+import type { ChangeEvent } from "react";
+
+export interface MultiStepFormComponentProps extends AwaitedPageProps {
+	classified: Prisma.ClassifiedGetPayload<{
+		include: { make: true };
+	}>;
+}
 
 type Params = {
-  [x: string]: string | string[]
-}
+	[x: string]: string | string[];
+};
+
+export type PrevState = {
+	success: boolean;
+	message: string;
+};
 
 export type PageProps = {
-  params?: Promise<Params>
-  searchParams?: Promise<{[x: string]: string | string[] | undefined}>
-}
+	params?: Promise<Params>;
+	searchParams?: Promise<{ [x: string]: string | string[] | undefined }>;
+};
 
 export type AwaitedPageProps = {
-  params?: Awaited<PageProps['params']>
-  searchParams?: Awaited<PageProps['searchParams']>
-}
+	params?: Awaited<PageProps["params"]>;
+	searchParams?: Awaited<PageProps["searchParams"]>;
+};
 
 export type ClassifiedWithImages = Prisma.ClassifiedGetPayload<{
-  include: {
-    images: true
-  }
-}>
+	include: {
+		images: true;
+	};
+}>;
+
+export type CustomerWithClassified = Prisma.CustomerGetPayload<{
+	include: { classified: true };
+}>;
 
 export enum MultiStepFormEnum {
 	WELCOME = 1,

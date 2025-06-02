@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+// import { auth } from "@/auth";
 import { navLinks } from "@/config/constants";
 import { routes } from "@/config/routes";
 import type { Favourites } from "@/config/types";
@@ -7,12 +7,12 @@ import { getSourceId } from "@/lib/source-id";
 import { HeartIcon, MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { SignOutForm } from "../auth/sign-out-form";
+// import { SignOutForm } from "../auth/sign-out-form";
 import { Button } from "../ui/button";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
+// import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 
 export const PublicHeader = async () => {
-	const session = await auth();
+	// const session = await auth();
 	const sourceId = await getSourceId();
 	const favourites = await redis.get<Favourites>(sourceId ?? "");
 	return (
@@ -39,7 +39,7 @@ export const PublicHeader = async () => {
 					</Link>
 				))}
 			</nav>
-			{session ? (
+			{/* {session ? (
 				<div className="items-center md:flex gap-x-6 hidden">
 					<Link href={routes.admin.dashboard} className="text-foreground">
 						Backoffice
@@ -85,7 +85,7 @@ export const PublicHeader = async () => {
 						))}
 					</nav>
 				</SheetContent>
-			</Sheet>
+			</Sheet> */}
 		</header>
 	);
 };
